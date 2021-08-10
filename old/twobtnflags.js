@@ -167,7 +167,7 @@ function bfsTypeThree(e, my){
             MITOsuperArray[my][`Attr4`] = true;
             return "bfsTypeThree complete";
         }
-        if(BtnObjSuprArray[my][e] == false  && BtnObjSuprArray[my][`Attr3`]){
+        if(BtnObjSuprArray[my][e] == false  && BtnObjSuprArray[my][`Attr3`] == false){
             MITOsuperArray[my][`Attr4`] = false;
             return "bfsTypeThree complete";
         }
@@ -225,7 +225,7 @@ function bfsTypeThree(e, my){
             MITOsuperArray[my][`Attr9`] = true;
             return "bfsTypeThree complete";
         }
-        if(BtnObjSuprArray[my][e] == false && BtnObjSuprArray[my][`Attr8`] == false){
+        if(BtnObjSuprArray[my][e] == false && BtnObjSuprArray[my][`Attr6`] == false){
             MITOsuperArray[my][`Attr9`] = false;
             return "bfsTypeThree complete";
         }

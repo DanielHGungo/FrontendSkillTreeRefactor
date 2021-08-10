@@ -22,30 +22,37 @@ h1 {
     width: 100%;
 }
 .navbar-options{
-    height: 100%;
     width: 100%;
 }
 .navbar-options ul{
     padding: 0;
+    margin-bottom: 0;
     display: flex;
-
+    height: 3vw;
+    justify-items: center;
+    align-items: center;
 }
 .navbar-options li {
+    padding: 0;
+    margin: 0;
     list-style: none;
     width: 100%;
     text-align: center;
+    height: 3vw;
 }
 #UserHover{
-    width: 40%;
+    width: 100%;
 }
-.navbar-options p {
-    display: block;
+.navbar-options ul li {
+    display: inline-block;
+    margin-bottom: 2vw;
     text-decoration: none;
     color: aqua;
     user-select: none;
     font-size: 2em;
 }
-.navbar-options li:hover {
+.navbar-options ul li:hover {
+    width: 100%;
     border-radius: 10px;
     background-color: #555;
 }
@@ -68,6 +75,8 @@ h1 {
 .Mage-options span h4{
     margin: 0;
     top: 0;
+    font-size: 1.5em;
+    text-decoration: underline;
 }
 .Mage-options span ul{
     padding: 0;
@@ -82,6 +91,9 @@ h1 {
     width: 100%;
     height: 100%;
     list-style: none;
+    font-size: 1.2em;
+    color: white;
+    text-shadow: 1px 1px black;
     text-decoration: none;
     text-align: center;
     user-select: none;
@@ -104,13 +116,20 @@ h1 {
 #MageID.active, #WarriorID.active, #SpecialistID.active {
     display: flex;
 }
-#MageHover.active, #WarriorHover.active, #SpecialistHover.active {
+#MageHover.active, #WarriorHover.active, #SpecialistHover.active, #UserHover.active {
+    width: 100%;
     background-color: #555;
     border-radius: 10px;
     box-shadow: 0 0 5px white;
 }
 #TreeAndSideBar{
     display: flex;
+    width: 100%;
+}
+#Onyx{
+    position: absolute;
+    overflow: hidden;
+    max-width: 100%;
 }
 .atree, .btree, .ctree{
     display: none;
@@ -120,26 +139,30 @@ h1 {
     min-height: 4rem;
     background:rgb(253, 217, 163);
 }
-/* #Exploration{
-    position: relative;
-    margin: 0;
-    display: inline-block;
-    width: 100%;
-    min-height: 4rem;
-    background:rgb(253, 217, 163);
+#toolTip{
+    position: absolute;
+    max-width: 20vw;
+    background: red;
+    transform: translate(-20vw, 0);
+    
 }
-#Necromancy{
-    display: none;
-    position: relative;
-    margin: 0;
-    width: 100%;
-    min-height: 4rem;
-    background:rgb(253, 217, 163);
-} */
+.tooltip{
+    position: absolute;
+	background-color: gray;
+	display: none;
+	width: 20vw;
+	height: 5vw;
+	z-index: 1000;
+}
 #SideBar{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     height: 100vw;
     min-width: 25vw;
-    background-color: green;
+    background-color: rgba(10, 10, 10, 0.781);
+    color: white;
+    box-shadow: inset 0.5vw 0vw 1vw 1vw black;
 }
 .SkillRow{
     position: relative;
@@ -171,14 +194,14 @@ h1 {
 .Connector{
     position: absolute;
     width: 1vw;
-    height: 10vw;
+    height: 11vw;
     background-color: purple;
 }
 .aAttr1-Attr3{
     transform: translate(-29.5vw, -2.4vw) rotate(35deg);
 }
 .aAttr1-Attr4{
-    transform:  translate(-19.5vw, -2vw) rotate(-35deg);
+    transform:  translate(-19.5vw, -2.5vw) rotate(-35deg);
 }
 .aAttr2-Attr7{
     transform: translate(-2vw, -2.4vw) rotate(35deg);
@@ -329,6 +352,7 @@ h1 {
 }
 .bAttr2{
     transform: translate(-10vw, 0vw);
+    z-index: 2;
 }
 .bAttr3{
     z-index: 2;
@@ -368,7 +392,7 @@ h1 {
     transform: translate(0vw, -10vw) rotate(-60deg);
 }
 .bAttr2-Attr5{
-    transform: translate(-30.5vw, 0vw);
+    transform: translate(-30.5vw, -2vw);
 }
 .bAttr3-Attr6{
     height: 12vw;
@@ -393,9 +417,39 @@ h1 {
     height: 12vw;
     transform: translate(5vw, -3vw) rotate(40deg);
 }
-/* .bAttr2{
-    transform: translate(-30vw, 0vw);
-} */
-/* .bAttr3{
-    transform: translate(-10vw, 0vw);
-} */
+
+.sbBtn{
+    margin-bottom: 4vw;
+    text-align: center;
+    font-size: 2em;
+    max-width: 70%;
+    border-radius: 10px;
+}
+#mySaver{
+    background-color: green;
+}
+#myLoader{
+    background-color: blue;
+}
+#ResetSkills{
+    background-color: red;
+}
+#mySaver:hover, #myLoader:hover, #ResetSkills:hover{
+    box-shadow: 0 0 5px 5px rgb(255, 255, 255);
+    /* box-shadow: inset 5px 5px 5px black; */
+}
+.Skill{
+    box-shadow: inset 0px 0px 5px 5px black;
+    /* border-collapse: 5px solid black; */
+    transition: 0.3s
+}
+.Skill:hover{
+    box-shadow: 3px 3px 4px 2px black;
+    border: 10px solid black;
+    height: 7.5vw;
+    width: 7.5vw;
+    /* width: 8.2vw;
+    height: 8.2vw; */
+    border: 5px;
+    border-color: white;
+}

@@ -103,26 +103,6 @@ var LockedButtons = [
 	[false, false, false, false, false, false, false, false, false]
 	];
 
-	// let nmButtonTruths = JSON.parse(JSON.stringify(ButtonTruths));
-// var arButtonTruths = JSON.parse(JSON.stringify(ButtonTruths));
-// var ioButtonTruths = JSON.parse(JSON.stringify(ButtonTruths));
-// var elButtonTruths = JSON.parse(JSON.stringify(ButtonTruths));
-// BtnObjSuprArray.push(nmButtonTruths);
-// BtnObjSuprArray.push(arButtonTruths);
-// BtnObjSuprArray.push(ioButtonTruths);
-// BtnObjSuprArray.push(elButtonTruths);
-
-// var MayITurnOn = {
-// 	Attr1: true,
-// 	Attr2: true,
-// 	Attr3: false,
-// 	Attr4: false,
-// 	Attr5: false,
-// 	Attr6: false,
-// 	Attr7: false,
-// 	Attr8: false,
-// 	Attr9: false
-// };
 var MITOsuperArray = [{ Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false },
 	{ Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false },
 	{ Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false },
@@ -150,40 +130,23 @@ var MITOsuperArray = [{ Attr1: true, Attr2: true, Attr3: false, Attr4: false, At
 	{ Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false },
 	{ Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false },
 	{ Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false }];
-// var ilMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var elMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var mtMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var aoMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var prMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var nmMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var ioMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var arMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var ioMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var nmMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var arMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-// var ioMayITurnOn = { Attr1: true, Attr2: true, Attr3: false, Attr4: false, Attr5: false, Attr6: false, Attr7: false, Attr8: false, Attr9: false };
-
-
-// MITOsuperArray.push(nmMayITurnOn);
-// MITOsuperArray.push(arMayITurnOn);
-// MITOsuperArray.push(ioMayITurnOn);
-// MITOsuperArray.push(elMayITurnOn);
 
 let myPoints = 99;
-
 
 function newPower(e, my){
 	let myprefix = getmyID(my);
 	let myE = myprefix + e;
     let bfs = "";
 	let cbs = "";
+	let myButton = document.getElementById(myE);
 if(BtnObjSuprArray[my][e] == false){
 	if(myPoints <= 0){ console.log("no points"); return; }	
 	if(MITOsuperArray[my][e] == true) {
 		BtnObjSuprArray[my][e] = true;
 		if(getMyTreeType(my) == 'A') {
 		bfs = ButtonFlagSetter(e, my);
-		document.getElementById(myE).style.backgroundColor = "yellow";
+		myButton.style.backgroundColor = "yellow";
+		myButton.style.boxShadow = "0px 0px 5px 5px black";
 		pointUsed();
 		Passer = getMyArray(e, my);
 		LineLighter(Passer, BtnObjSuprArray[my][e], myprefix);
@@ -314,6 +277,7 @@ function getMyTreeType(num){
 		case 26: return 'B';
 	}
 }
+//TODO: fix MITOsuperArray because b typeTree allows Attr2 before Attr1
 function getMyArray(e, my){
 	if(getMyTreeType(my) === 'A'){
 	let p = ButtonMasterArray[e];
@@ -332,9 +296,7 @@ function getMyArray(e, my){
 function LineLighter(e, BT, myprefix){
 	if (BT == true){
 		for(let i = 0; i<e.length; i++){
-		//console.log("I should turn on " + myprefix + e[i]);
 		let myline = myprefix + e[i];
-		//console.log("and the output can! " + mylight);
 		document.getElementById(myline).style.backgroundColor = "yellow";
 		}
 	}
